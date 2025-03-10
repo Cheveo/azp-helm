@@ -1,0 +1,21 @@
+replicaCount: 1
+
+image:
+  repository: mcr.microsoft.com/azure-pipelines/vsts-agent
+  tag: latest
+  pullPolicy: IfNotPresent
+
+azp:
+  # Replace with your Azure DevOps organization URL
+  url: ""
+  # The agent pool to join
+  pool: "default"
+  # Optionally specify a fixed agent name or let it be generated dynamically
+  agentName: "agent-{{ randAlphaNum 5 | lower }}"
+
+# The name of the Kubernetes Secret (created via SealedSecrets) that stores your PAT
+patSecretName: azure-pipeline-runner-pat
+
+# This value should be the encrypted (sealed) version of your personal access token.
+# Use kubeseal to encrypt your PAT and replace the placeholder below.
+sealedPat: "ENC[YOUR_ENCRYPTED_PAT_HERE]"

@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: { { include "azure-pipeline-runner.fullname" . } }
+  labels:
+    app: { { include "azure-pipeline-runner.name" . } }
+spec:
+  replicas: { { .Values.replicaCount } }
+  selector:
+    matchLabels:
+      app: { { include "azure-pipeline-runner.name" . } }
+  template:
+    metadata:
+      labels:
+        app: { { include "azure-pipeline-runner.name" . } }
+    spec:
+      containers:
+        - name: azure-pipeline-runner
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: { { .Values.image.pullPolicy } }
+          env:
+            - name: AZP_URL
+              value: { { .Values.azp.url | quote } }
+            - name: AZP_POOL
+              value: { { .Values.azp.pool | quote } }
+            - name: AZP_AGENT_NAME
+              value: { { .Values.azp.agentName | quote } }
+            - name: AZP_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: { { .Values.patSecretName } }
+                  key: pat
