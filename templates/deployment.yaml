@@ -1,32 +1,31 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: { { include "azure-pipeline-runner.fullname" . } }
+  name: {{ include "azp-agent.fullname" . }}
   labels:
-    app: { { include "azure-pipeline-runner.name" . } }
+    app: {{ include "azp-agent.name" . }}
 spec:
-  replicas: { { .Values.replicaCount } }
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: { { include "azure-pipeline-runner.name" . } }
+      app: {{ include "azp-agent.name" . }}
   template:
     metadata:
       labels:
-        app: { { include "azure-pipeline-runner.name" . } }
+        app: {{ include "azp-agent.name" . }}
     spec:
       containers:
-        - name: azure-pipeline-runner
+        - name: azp-agent
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          imagePullPolicy: { { .Values.image.pullPolicy } }
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: AZP_URL
-              value: { { .Values.azp.url | quote } }
+              value: "{{ .Values.azure.url }}"
             - name: AZP_POOL
-              value: { { .Values.azp.pool | quote } }
-            - name: AZP_AGENT_NAME
-              value: { { .Values.azp.agentName | quote } }
+              value: "{{ .Values.azure.pool }}"
             - name: AZP_TOKEN
-              valueFrom:
-                secretKeyRef:
-                  name: { { .Values.patSecretName } }
-                  key: pat
+              value: "{{ .Values.azure.token }}"
+
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      restartPolicy: Always

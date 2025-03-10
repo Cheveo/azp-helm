@@ -1,21 +1,25 @@
 replicaCount: 1
 
 image:
-  repository: mcr.microsoft.com/azure-pipelines/vsts-agent
-  tag: latest
+  repository: cheveo/azp-agent
+  tag: "1.0.0"
   pullPolicy: IfNotPresent
 
-azp:
-  # Replace with your Azure DevOps organization URL
-  url: ""
-  # The agent pool to join
-  pool: "default"
-  # Optionally specify a fixed agent name or let it be generated dynamically
-  agentName: "agent-{{ randAlphaNum 5 | lower }}"
+azure:
+  pool: "default"  # Change this to your Azure DevOps agent pool
+  token: ""  # Provide this via a Kubernetes secret
+  url: ""  # Change this to your Azure DevOps organization URL
 
-# The name of the Kubernetes Secret (created via SealedSecrets) that stores your PAT
-patSecretName: azure-pipeline-runner-pat
+resources:
+  limits:
+    cpu: "500m"
+    memory: "512Mi"
+  requests:
+    cpu: "250m"
+    memory: "256Mi"
 
-# This value should be the encrypted (sealed) version of your personal access token.
-# Use kubeseal to encrypt your PAT and replace the placeholder below.
-sealedPat: "ENC[YOUR_ENCRYPTED_PAT_HERE]"
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
