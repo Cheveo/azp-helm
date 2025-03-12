@@ -2,7 +2,7 @@ replicaCount: 1
 
 image:
   repository: cheveo/azp-agent
-  tag: "1.0.1"
+  tag: "1.0.2"
   pullPolicy: IfNotPresent
 
 # if you want to use a secret to store your azure PAT, provide the secret name here

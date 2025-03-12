@@ -3,42 +3,12 @@ entries:
   azp-agent:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-03-12T13:03:40.7852+01:00"
+    created: "2025-03-12T13:18:25.345185+01:00"
     description: A Helm chart for deploying Azure Pipelines Agent
-    digest: bb4bd8e8140ea64065c0282b09cae1242a5398ba48f5b7d65f34a257c69a46d6
+    digest: 88e6c4aa88e099a508a413ec192cfd4332ed8c885e70cb6726c0442fa2e1f902
     name: azp-agent
     type: application
     urls:
-    - azp-agent-1.0.5.tgz
-    version: 1.0.5
-  - apiVersion: v2
-    appVersion: 1.0.0
-    created: "2025-03-12T13:03:40.784685+01:00"
-    description: A Helm chart for deploying Azure Pipelines Agent
-    digest: eb2762b01d0838bea463b46463f719b8ea32ad44205c6560b76906ca322b3d8b
-    name: azp-agent
-    type: application
-    urls:
-    - azp-agent-1.0.4.tgz
-    version: 1.0.4
-  - apiVersion: v2
-    appVersion: 1.0.0
-    created: "2025-03-12T13:03:40.784338+01:00"
-    description: A Helm chart for deploying Azure Pipelines Agent
-    digest: b6422fd320a042643f6ea551a95ea62a663993cff01d592fc52396b87e7c6b5e
-    name: azp-agent
-    type: application
-    urls:
-    - azp-agent-1.0.3.tgz
-    version: 1.0.3
-  - apiVersion: v2
-    appVersion: 1.0.0
-    created: "2025-03-12T13:03:40.784056+01:00"
-    description: A Helm chart for deploying Azure Pipelines Agent
-    digest: 1f979d0196b12802b0ed936262929ad3472cfae94a9fd72d64bdb215345f3492
-    name: azp-agent
-    type: application
-    urls:
-    - azp-agent-1.0.2.tgz
-    version: 1.0.2
-generated: "2025-03-12T13:03:40.783114+01:00"
+    - azp-agent-1.1.0.tgz
+    version: 1.1.0
+generated: "2025-03-12T13:18:25.33509+01:00"
