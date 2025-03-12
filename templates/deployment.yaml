@@ -24,7 +24,11 @@ spec:
             - name: AZP_POOL
               value: "{{ .Values.azure.pool }}"
             - name: AZP_TOKEN
-              value: "{{ .Values.azure.token }}"
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.tokenSecretName }}
+                  key: token
+
 
           resources:
             {{- toYaml .Values.resources | nindent 12 }}

@@ -5,6 +5,10 @@ image:
   tag: "1.0.1"
   pullPolicy: IfNotPresent
 
+# if you want to use a secret to store your azure PAT, provide the secret name here
+# create a secret with the stringData token containing you azure PAT
+tokenSecretName: "azp-token-secret"
+
 azure:
   pool: "default"  # Change this to your Azure DevOps agent pool
   token: ""  # Provide this via a Kubernetes secret
