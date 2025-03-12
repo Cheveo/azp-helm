@@ -38,5 +38,3 @@ ENTRYPOINT ["./start.sh"]
 # Push Image:
 # docker push saadbelk/cheveo/azp-agent-arm64:0.0.1
 
-docker push saadbelk/cheveo/azp-agent-arm64:0.0.1
-
